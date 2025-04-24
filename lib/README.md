@@ -1,7 +1,7 @@
-# EZ-Horizon 🌤️  
-*A Personal Flutter Portfolio Project by Hamza*
+# EZHorizon-Weather-App 🌤️  
+*A Flutter Weather App*
 
-**EZ-Horizon** is a sleek and lightweight weather application built as part of my personal Flutter portfolio. This project showcases my skills in API integration, location-based services, clean UI/UX design, and state management in Flutter.
+**EZ-Horizon** is a sleek and lightweight weather application built as part of my personal Flutter portfolio. This project showcases my skills in API integration, location-based services, clean UI/UX design and state management in Flutter.
 
 ---
 
