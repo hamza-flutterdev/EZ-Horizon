@@ -8,10 +8,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 class CitySearchDialog extends StatefulWidget {
   final Function(String) onCitySelected;
 
-  const CitySearchDialog({
-    super.key,
-    required this.onCitySelected,
-  });
+  const CitySearchDialog({super.key, required this.onCitySelected});
 
   @override
   State<CitySearchDialog> createState() => _CitySearchDialogState();
@@ -50,10 +47,13 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Search City'),
+      title: const Text('Search'),
       content: TypeAheadField<String>(
+        hideOnLoading: true,
+        debounceDuration: const Duration(milliseconds: 300),
         controller: _typeAheadController,
         suggestionsCallback: (pattern) async {
+          if (pattern.length < 2) return [];
           return _allCities
               .where(
                 (city) => city.toLowerCase().contains(pattern.toLowerCase()),
@@ -80,18 +80,21 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
             ),
           );
         },
-        loadingBuilder: (context) => const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          child: CircularProgressIndicator(),
-        ),
-        errorBuilder: (context, error) => const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          child: Text('Error occurred'),
-        ),
-        emptyBuilder: (context) => const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          child: Text('No cities found'),
-        ),
+        loadingBuilder:
+            (context) => const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: CircularProgressIndicator(),
+            ),
+        errorBuilder:
+            (context, error) => const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Text('Error occurred'),
+            ),
+        emptyBuilder:
+            (context) => const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Text('No cities found'),
+            ),
       ),
       actions: [
         TextButton(

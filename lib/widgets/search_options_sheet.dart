@@ -39,7 +39,7 @@ class SearchOptionsSheet extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.search),
-            title: const Text('Search by City Name'),
+            title: const Text('Search by Name'),
             onTap: () {
               Navigator.pop(context);
               onCitySearchSelected();
