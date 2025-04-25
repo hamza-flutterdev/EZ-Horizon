@@ -1,5 +1,5 @@
-# EZ-Horizon 🌤️  
-*A Personal Flutter Portfolio Project by Hamza*
+# EZHorizon-Weather-App 🌤️  
+*A Flutter Weather App*
 
 **EZ-Horizon** is a sleek and lightweight weather application built as part of my personal Flutter portfolio. This project showcases my skills in API integration, location-based services, clean UI/UX design and state management in Flutter.
 
@@ -8,24 +8,47 @@
 ## 👨‍💻 About the Project
 
 This app allows users to:  
-- Search for weather updates by city name  
-- Use their current location to fetch live weather  
-- Select their location through country, state, and city dropdowns  
-- View animated weather visuals via Lottie  
-
-It demonstrates my ability to build complete Flutter applications from scratch, focusing on performance, responsiveness, and user-friendly design.
+- 🔍 Search for weather updates by city name  
+- 📍 Use their current location to fetch live weather  
+- 🌎 Select their location through country, state, and city dropdowns  
+- 🎬 View animated weather visuals via Lottie  
+- 💧 See detailed weather metrics including humidity, wind, visibility, and pressure  
+- ☀️🌙 Check sunrise and sunset times  
+- 🔄 Pull-to-refresh for latest weather updates  
 
 ---
 
 ## 🔧 Technologies & Packages Used
 
-- **Flutter** — Primary framework for cross-platform development  
-- [`http`](https://pub.dev/packages/http) — For REST API integration  
-- [`geolocator`](https://pub.dev/packages/geolocator) — For location services  
-- [`geocoding`](https://pub.dev/packages/geocoding) — For converting coordinates to human-readable locations  
-- [`lottie`](https://pub.dev/packages/lottie) — For adding animated weather illustrations  
-- [`country_state_city_picker`](https://pub.dev/packages/country_state_city_picker) — For structured location selection  
-- [`flutter_typeahead`](https://pub.dev/packages/flutter_typeahead) — For intelligent city search  
+| Package | Purpose |
+|---------|---------|
+| [http](https://pub.dev/packages/http) | REST API integration |
+| [geolocator](https://pub.dev/packages/geolocator) | Location services |
+| [geocoding](https://pub.dev/packages/geocoding) | Coordinate conversion |
+| [lottie](https://pub.dev/packages/lottie) | Animated weather illustrations |
+| [country_state_city_picker](https://pub.dev/packages/country_state_city_picker) | Structured location selection |
+| [flutter_typeahead](https://pub.dev/packages/flutter_typeahead) | Intelligent city search |
+| [intl](https://pub.dev/packages/intl) | Date/time formatting |
+| [cupertino_icons](https://pub.dev/packages/cupertino_icons) | iOS-style icons |
+
+---
+
+## 🆕 Recent Updates
+
+### 🌟 New Features
+- Added comprehensive weather metrics:
+  - 💧 Humidity 
+  - 🌬️ Wind speed 
+  - 👀 Visibility 
+  - ⏲️ Pressure
+  - ☀️🌙 Sunrise/sunset times
+- Implemented pull-to-refresh functionality
+
+### 🛠 Improvements
+- Preloaded and cached `cities.json` for faster search
+- Expanded city/country database
+- Fixed UI overflow issues
+- Optimized widget tree performance
 
 ---
 
@@ -33,48 +56,50 @@ It demonstrates my ability to build complete Flutter applications from scratch, 
 
 lib/
 ├── main.dart
-├── screens/            # App screens (Home, Search, etc.)
-├── widgets/            # Reusable UI components
-├── services/           # API & location logic
-└── models/             # Data models
+├── screens/ # App screens
+├── widgets/ # Reusable components
+├── services/ # API & location logic
+├── models/ # Data models
+└── assets/ # Local data files
+
+---
+
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- Dart SDK (comes with Flutter)
+- Android Studio/VS Code
+- Emulator or physical device
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install) (latest stable recommended)  
-- Dart SDK (comes with Flutter)  
-- Android Studio / VS Code  
-- Android/iOS emulator or physical device  
+### Installation
+```bash
+git clone https://github.com/hamza-flutterdev/EZ-Horizon.git
+```bash
+cd EZ-Horizon
+```bash
+flutter pub get
+```bash
+flutter run
 
-### Installation Steps
+## 🎯 Key Features Demonstrated
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/hamza-flutterdev/EZ-Horizon.git
-2.   cd EZ-Horizon
-3.   flutter pub get
-4.   flutter run
-
-## 🎯 What This Project Demonstrates
-
-📡 RESTful API integration
-
-🌍 Real-time geolocation and reverse geocoding
-
-🧩 Reusable widgets and clean folder structure
-
-📱 Responsive UI with Lottie animations
-
-🧠 State and asynchronous data handling
+| Feature              | Implementation Details                        |
+|----------------------|-----------------------------------------------|
+| **API Integration**  | OpenWeatherMap API with http package          |
+| **Geolocation**      | GPS with fallback to network location         |
+| **State Management** | setState with FutureBuilder                   |
+| **UI/UX**            | Responsive design with Lottie animations      |
+| **Performance**      | Cached city data, optimized widget tree       |
+| **User Experience**  | Pull-to-refresh, intelligent typeahead search |
 
 ## 🙋‍♂️ About Me
 
-Hi! I'm Hamza, a Flutter developer passionate about building intuitive mobile apps with clean architecture and beautiful UIs.
-This app is part of my developer portfolio.
+**Hamza**  
+Flutter Developer  
 
-📧 Email: hamzabutthb553.hb@gmail.com
-
-💼 LinkedIn: linkedin.com/in/hamza-flutterdev
+📧 `hamzabutthb553.hb@gmail.com`  
+🔗 [LinkedIn Profile](https://linkedin.com/in/hamza-flutterdev)
