@@ -75,7 +75,7 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
             controller: controller,
             focusNode: focusNode,
             decoration: const InputDecoration(
-              hintText: 'Enter city name',
+              hintText: 'Type Here',
               border: OutlineInputBorder(),
             ),
           );
