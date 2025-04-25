@@ -143,6 +143,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: WeatherDisplay(
               weather: _weather,
               animationPath: getWeatherAnimation(_weather?.condition),
+              onRefresh: _fetchWeather,
             ),
           ),
         ],
