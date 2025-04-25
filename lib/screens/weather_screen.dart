@@ -145,21 +145,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
               animationPath: getWeatherAnimation(_weather?.condition),
             ),
           ),
-
-          // refresh button
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: SizedBox(
-              width: 130,
-              child: ElevatedButton(
-                onPressed: () => _fetchWeather(),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                ),
-                child: const Text('Refresh Weather'),
-              ),
-            ),
-          ),
         ],
       ),
     );

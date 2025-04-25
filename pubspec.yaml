@@ -40,6 +40,7 @@ dependencies:
   lottie: ^3.3.1
   country_state_city_picker: ^1.2.8
   flutter_typeahead: ^5.2.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:

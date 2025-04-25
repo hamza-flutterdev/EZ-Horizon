@@ -1,8 +1,7 @@
-// weather display UI
-
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:ez_horizon_weather_app/models/weather_model.dart';
+import 'package:ez_horizon_weather_app/widgets/weather_main_info.dart';
+import 'package:ez_horizon_weather_app/widgets/weather_details_cards.dart';
 
 class WeatherDisplay extends StatelessWidget {
   final Weather? weather;
@@ -17,57 +16,23 @@ class WeatherDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Weather information
-            Hero(
-              tag: 'city-name',
-              child: Material(
-                type: MaterialType.transparency,
-                child: Text(
-                  weather?.cityName ?? "Loading City",
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+            // Location and main weather info 
+            WeatherMainInfoWidget(
+              weather: weather,
+              animationPath: animationPath,
             ),
-            const SizedBox(height: 20),
-            Hero(
-              tag: 'weather-animation',
-              child: Lottie.asset(
-                animationPath,
-                width: 200,
-                height: 200,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Hero(
-              tag: 'temperature',
-              child: Material(
-                type: MaterialType.transparency,
-                child: Text(
-                  '${weather?.temperature.round()}°C',
-                  style: const TextStyle(fontSize: 48),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Hero(
-              tag: 'weather-condition',
-              child: Material(
-                type: MaterialType.transparency,
-                child: Text(
-                  weather?.condition ?? '',
-                  style: const TextStyle(fontSize: 24),
-                ),
-              ),
-            ),
+
+            const SizedBox(height: 40),
+
+            // Weather details cards 
+            WeatherDetailsCardsWidget(weather: weather),
           ],
         ),
       ),
