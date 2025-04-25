@@ -9,27 +9,26 @@
 
 This app allows users to:  
 - 🔍 Search for weather updates by city name  
-- 📍 Use their current location to fetch live weather  
-- 🌎 Select their location through country, state, and city dropdowns  
+- 📍 Use current location to fetch live weather  
+- 🌎 Select location through country, state, and city dropdowns  
 - 🎬 View animated weather visuals via Lottie  
 - 💧 See detailed weather metrics including humidity, wind, visibility, and pressure  
-- ☀️🌙 Check sunrise and sunset times  
+- ☀️ Check sunrise and sunset times  
 - 🔄 Pull-to-refresh for latest weather updates  
 
 ---
 
 ## 🔧 Technologies & Packages Used
 
-| Package | Purpose |
-|---------|---------|
-| [http](https://pub.dev/packages/http) | REST API integration |
-| [geolocator](https://pub.dev/packages/geolocator) | Location services |
-| [geocoding](https://pub.dev/packages/geocoding) | Coordinate conversion |
-| [lottie](https://pub.dev/packages/lottie) | Animated weather illustrations |
-| [country_state_city_picker](https://pub.dev/packages/country_state_city_picker) | Structured location selection |
-| [flutter_typeahead](https://pub.dev/packages/flutter_typeahead) | Intelligent city search |
-| [intl](https://pub.dev/packages/intl) | Date/time formatting |
-| [cupertino_icons](https://pub.dev/packages/cupertino_icons) | iOS-style icons |
+| Package                                                                         | Purpose                        |
+|---------------------------------------------------------------------------------|--------------------------------|
+| [http](https://pub.dev/packages/http)                                           | REST API integration           |
+| [geolocator](https://pub.dev/packages/geolocator)                               | Location services              |
+| [geocoding](https://pub.dev/packages/geocoding)                                 | Coordinate conversion          |
+| [lottie](https://pub.dev/packages/lottie)                                       | Animated weather illustrations |
+| [country_state_city_picker](https://pub.dev/packages/country_state_city_picker) | Structured location selection  |
+| [flutter_typeahead](https://pub.dev/packages/flutter_typeahead)                 | Intelligent city search        |
+| [intl](https://pub.dev/packages/intl)                                           | Date/time formatting           |
 
 ---
 
@@ -41,8 +40,8 @@ This app allows users to:
   - 🌬️ Wind speed 
   - 👀 Visibility 
   - ⏲️ Pressure
-  - ☀️🌙 Sunrise/sunset times
-- Implemented pull-to-refresh functionality
+  - ☀️ Sunrise/sunset times
+  - 🔁 Implemented pull-to-refresh functionality
 
 ### 🛠 Improvements
 - Preloaded and cached `cities.json` for faster search
@@ -56,10 +55,11 @@ This app allows users to:
 
 lib/
 ├── main.dart
-├── screens/            # App screens (Home, Search, etc.)
-├── widgets/            # Reusable UI components
-├── services/           # API & location logic
-└── models/             # Data models
+├── screens/ # App screens
+├── widgets/ # Reusable components
+├── services/ # API & location logic
+├── models/ # Data models
+└── assets/ # Local data files
 
 ---
 
@@ -77,23 +77,29 @@ lib/
 ### Installation
 ```bash
 git clone https://github.com/hamza-flutterdev/EZ-Horizon.git
+```
 ```bash
 cd EZ-Horizon
+```
 ```bash
 flutter pub get
+```
 ```bash
 flutter run
+```
 
-## 🎯 Key Features Demonstrated
+---
 
-| Feature              | Implementation Details                        |
-|----------------------|-----------------------------------------------|
-| **API Integration**  | OpenWeatherMap API with http package          |
-| **Geolocation**      | GPS with fallback to network location         |
-| **State Management** | setState with FutureBuilder                   |
-| **UI/UX**            | Responsive design with Lottie animations      |
-| **Performance**      | Cached city data, optimized widget tree       |
-| **User Experience**  | Pull-to-refresh, intelligent typeahead search |
+## 🎯 What This Project Demonstrates
+
+- 📡 RESTful API integration
+- 🌍 Real-time geolocation and reverse geocoding
+- 🧩 Reusable widgets and clean folder structure
+- 📱 Responsive UI with Lottie animations
+- 🔁 Pull-to-refresh functionality
+- 📊 Detailed weather insights (humidity, wind, visibility, pressure, sunrise/sunset)
+- ⚡ Optimised performance with cached city data
+- 🧠 State and asynchronous data handling
 
 ## 🙋‍♂️ About Me
 
