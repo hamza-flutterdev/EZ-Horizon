@@ -1,4 +1,5 @@
-// Create a new file: lib/services/city_data_cache.dart
+// This file store cities.json file as cache
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
