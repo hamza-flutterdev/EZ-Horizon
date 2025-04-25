@@ -77,8 +77,11 @@ lib/
 ### Installation
 ```bash
 git clone https://github.com/hamza-flutterdev/EZ-Horizon.git
+```bash
 cd EZ-Horizon
+```bash
 flutter pub get
+```bash
 flutter run
 
 ## 🎯 Key Features Demonstrated
