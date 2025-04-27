@@ -80,7 +80,7 @@ class WeatherMainInfoWidget extends StatelessWidget {
                   '${weather!.temperature.round()}',
                   style: const TextStyle(
                     fontSize: 110,
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.w300,
                     color: Colors.white,
                   ),
                 ),
@@ -95,7 +95,7 @@ class WeatherMainInfoWidget extends StatelessWidget {
                   '°C',
                   style: TextStyle(
                     fontSize: 36,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                     color: Colors.white,
                   ),
                 ),
