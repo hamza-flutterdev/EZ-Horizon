@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ez_horizon_weather_app/models/weather_model.dart'; // Ensure this import is correct
-import 'package:intl/intl.dart'; // Needed for date formatting
-import 'package:ez_horizon_weather_app/constants.dart'; // Import the constants file
+import 'package:ez_horizon_weather_app/models/weather_model.dart';
+import 'package:intl/intl.dart';
 
 class WeatherDetailsCardsWidget extends StatelessWidget {
   final Weather? weather;
@@ -17,9 +16,7 @@ class WeatherDetailsCardsWidget extends StatelessWidget {
         children: [
           Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                customPrimaryColor, 
-              ),
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
           ),
           const SizedBox(height: 20),
@@ -30,200 +27,188 @@ class WeatherDetailsCardsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 8, bottom: 16),
-          child: Text(
-            'TODAY\'S DETAILS',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: customPrimaryColor,
-              letterSpacing: 1.5,
-            ),
-          ),
-        ),
+        // Section header
+        _buildSectionHeader('TODAY\'S DETAILS'),
+        const SizedBox(height: 12),
 
-        // Primary details row
+        // First row
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildDetailCard(
-              context,
-              Icons.water_drop_outlined,
-              'Humidity',
-              '${weather!.humidity}%',
-              flex: 1,
+            // Humidity card
+            Expanded(
+              child: _buildDetailCard(
+                title: 'Humidity',
+                value: '${weather!.humidity}%',
+                icon: Icons.water_drop_outlined,
+              ),
             ),
             const SizedBox(width: 16),
-            _buildDetailCard(
-              context,
-              Icons.air_outlined,
-              'Wind',
-              '${weather!.windSpeed.toStringAsFixed(1)} km/h',
-              subtitle: _getWindDirection(weather!.windDirection),
-              flex: 1,
+            // Wind card
+            Expanded(
+              child: _buildDetailCard(
+                title: 'Wind',
+                value: '${weather!.windSpeed.toStringAsFixed(1)} km/h',
+                subtitle: _getWindDirection(weather!.windDirection),
+                icon: Icons.air_outlined,
+              ),
             ),
           ],
         ),
 
         const SizedBox(height: 16),
-        // Secondary details row
+
+        // Second row
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildDetailCard(
-              context,
-              Icons.visibility_outlined,
-              'Visibility',
-              '${(weather!.visibility / 1000).toStringAsFixed(1)} km',
-              flex: 1,
+            // Visibility card
+            Expanded(
+              child: _buildDetailCard(
+                title: 'Visibility',
+                value: '${(weather!.visibility / 1000).toStringAsFixed(1)} km',
+                icon: Icons.visibility_outlined,
+              ),
             ),
             const SizedBox(width: 16),
-            _buildDetailCard(
-              context,
-              Icons.speed_outlined,
-              'Pressure',
-              '${weather!.pressure} hPa',
-              flex: 1,
+            // Pressure card
+            Expanded(
+              child: _buildDetailCard(
+                title: 'Pressure',
+                value: '${weather!.pressure} hPa',
+                icon: Icons.speed_outlined,
+              ),
             ),
           ],
         ),
 
-        const SizedBox(height: 25),
+        const SizedBox(height: 20),
+        _buildSectionHeader('SUN TIMES'),
+        const SizedBox(height: 12),
+
         // Sun times container
-        Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [
-                Color(0xFFFFB74D), // Light Orange
-                Color(0xFFFB8C00), // Darker Orange
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+        Row(
+          children: [
+            _buildSunCard(
+              icon: Icons.wb_sunny_outlined,
+              title: 'Sunrise',
+              time: _formatTime(weather!.sunrise),
             ),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.orange.withAlpha(62),
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildSunTimeColumn(
-                context,
-                Icons.wb_sunny_outlined,
-                'Sunrise',
-                _formatTime(weather!.sunrise),
-              ),
-              // Divider
-              Container(
-                height: 60,
-                width: 1.5,
-                color: Colors.white.withAlpha(60),
-              ),
-              _buildSunTimeColumn(
-                context,
-                Icons.nightlight_round_outlined,
-                'Sunset',
-                _formatTime(weather!.sunset),
-              ),
-            ],
-          ),
+            const SizedBox(width: 16),
+            _buildSunCard(
+              icon: Icons.nightlight_round_outlined,
+              title: 'Sunset',
+              time: _formatTime(weather!.sunset),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  // Helper widget for individual detail cards
-  Widget _buildDetailCard(
-    BuildContext context,
-    IconData icon,
-    String label,
-    String value, {
+  // Detail card with translucent background
+  Widget _buildDetailCard({
+    required String title,
+    required String value,
+    required IconData icon,
     String? subtitle,
-    int flex = 1,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white.withAlpha(35),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 24, color: Colors.white),
+          const SizedBox(height: 12),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white.withAlpha(150),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          subtitle != null
+              ? Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white.withAlpha(135),
+                  fontWeight: FontWeight.w500,
+                ),
+              )
+              : const SizedBox(height: 16), // Reserve space if no subtitle
+        ],
+      ),
+    );
+  }
+
+  // Sun card with translucent background
+  Widget _buildSunCard({
+    required IconData icon,
+    required String title,
+    required String time,
   }) {
     return Expanded(
-      flex: flex,
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.white.withAlpha(35),
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withAlpha(34),
-              blurRadius: 12,
-              offset: const Offset(0, 5),
-            ),
-          ],
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Icon(
-              icon,
-              size: 24,
-              color: customPrimaryColor, // Use the constant
+            Icon(icon, color: Colors.white, size: 24),
+            const SizedBox(width: 12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white.withAlpha(150),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  time,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 12),
-            Text(
-              label,
-              style: TextStyle(fontSize: 15, color: Colors.grey[700]),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            if (subtitle != null) ...[
-              const SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: TextStyle(fontSize: 13, color: Colors.grey[600]),
-              ),
-            ],
           ],
         ),
       ),
     );
   }
 
-  // Helper widget for sun time columns
-  Widget _buildSunTimeColumn(
-    BuildContext context,
-    IconData icon,
-    String label,
-    String time,
-  ) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, color: Colors.white, size: 32),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white70, fontSize: 14),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          time,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
+  // Section header for themed version
+  Widget _buildSectionHeader(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+        letterSpacing: 1.2,
+      ),
     );
   }
 

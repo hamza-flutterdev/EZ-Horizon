@@ -1,4 +1,3 @@
-import 'package:ez_horizon_weather_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class PullToRefresh extends StatefulWidget {
@@ -15,7 +14,7 @@ class _PullToRefreshState extends State<PullToRefresh> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      color: customPrimaryColor,
+      color: Color(0xFF4A90E2),
       onRefresh: widget.onRefresh ?? _defaultRefresh,
       child: widget.child,
     );

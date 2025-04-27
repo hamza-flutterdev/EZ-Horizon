@@ -1,13 +1,15 @@
 import 'package:ez_horizon_weather_app/screens/weather_screen.dart';
 import 'package:ez_horizon_weather_app/services/city_data_cache.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async {
+Future<void> main() async {
+  await dotenv.load();
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Preload cities data
   await CityDataCache().loadCities();
-  
+
   runApp(const EZHorizon());
 }
 

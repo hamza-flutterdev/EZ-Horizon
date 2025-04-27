@@ -8,6 +8,7 @@ import 'package:ez_horizon_weather_app/services/weather_service.dart';
 import 'package:ez_horizon_weather_app/widgets/weather_display.dart';
 import 'package:ez_horizon_weather_app/widgets/search_options_sheet.dart';
 import 'package:ez_horizon_weather_app/utils/weather_utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -17,7 +18,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  final _weatherService = WeatherService('7532e9d87f362e9d18e4b96cf2c7e230');
+  final _weatherService = WeatherService(dotenv.env['API_KEY']);
   Weather? _weather;
   String _currentSearchType = 'Current Location';
 
@@ -108,18 +109,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
             ),
           ),
         ),
-        title: const Text('EZ Horizon'),
+        title: const Text(
+          'EZ Horizon',
+          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF4A90E2),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
+            color: Colors.white,
             onPressed: _showSearchOptions,
             tooltip: 'Search options',
           ),
         ],
       ),
-      backgroundColor: const Color.fromARGB(255, 233, 233, 233),
+      backgroundColor: Color(0xFF4A90E2),
       body: Column(
         children: [
           // Location indicator
@@ -128,11 +133,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.location_pin, size: 16, color: Colors.grey),
+                const Icon(Icons.location_pin, size: 16, color: Colors.white),
                 const SizedBox(width: 8),
                 Text(
                   _currentSearchType,
-                  style: const TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),

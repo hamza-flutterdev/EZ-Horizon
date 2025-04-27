@@ -17,6 +17,7 @@ class CountryCityPickerDialog extends StatelessWidget {
     final double dialogWidth = screenWidth * 0.85;
 
     return Dialog(
+      //backgroundColor: Colors.transparent,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       // Remove inset padding that might cause additional overflow
       insetPadding: EdgeInsets.symmetric(
@@ -29,6 +30,17 @@ class CountryCityPickerDialog extends StatelessWidget {
           maxHeight: screenHeight * 0.7,
           maxWidth: dialogWidth,
         ),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF4A90E2), // Top blue
+              Color(0xFF5F9CE3), // Middle blue
+              Color(0xFF74A8E4), // Bottom blue
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
+
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           child: Column(
@@ -37,7 +49,11 @@ class CountryCityPickerDialog extends StatelessWidget {
             children: [
               const Text(
                 'Select Location',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
@@ -58,6 +74,8 @@ class CountryCityPickerDialog extends StatelessWidget {
                             Navigator.pop(context);
                           }
                         },
+                        style: const TextStyle(color: Colors.white),
+                        dropdownColor: Color(0xFF4A90E2),
                       ),
                     ),
                   );
@@ -66,6 +84,10 @@ class CountryCityPickerDialog extends StatelessWidget {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () => Navigator.pop(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF4A90E2),
+                  foregroundColor: Colors.white,
+                ),
                 child: const Text('Cancel'),
               ),
             ],

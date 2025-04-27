@@ -1,6 +1,7 @@
 // search options sheet
 
 import 'package:flutter/material.dart';
+import 'build_list_tile.dart';
 
 class SearchOptionsSheet extends StatelessWidget {
   final VoidCallback onCurrentLocationSelected;
@@ -16,36 +17,62 @@ class SearchOptionsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: const Icon(Icons.my_location),
-            title: const Text('Current Location'),
-            onTap: () {
-              Navigator.pop(context);
-              onCurrentLocationSelected();
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.flag),
-            title: const Text('Select Country & City'),
-            onTap: () {
-              Navigator.pop(context);
-              onCountryCitySelected();
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.search),
-            title: const Text('Search by Name'),
-            onTap: () {
-              Navigator.pop(context);
-              onCitySearchSelected();
-            },
-          ),
-        ],
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF4A90E2), // Top blue
+            Color(0xFF5F9CE3), // Middle blue
+            Color(0xFF74A8E4), // Bottom blue
+          ],
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40,
+              height: 4,
+              margin: const EdgeInsets.only(bottom: 16),
+              decoration: BoxDecoration(
+                color: Colors.white.withAlpha(135),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            BuildListTile(
+              icon: Icons.my_location,
+              title: 'Current Location',
+              onTap: () {
+                Navigator.pop(context);
+                onCurrentLocationSelected();
+              },
+            ),
+
+            const Divider(color: Colors.white24),
+            BuildListTile(
+              icon: Icons.flag,
+              title: 'Select Country & City',
+              onTap: () {
+                Navigator.pop(context);
+                onCountryCitySelected();
+              },
+            ),
+
+            const Divider(color: Colors.white24),
+            BuildListTile(
+              icon: Icons.search,
+              title: 'Search by Name',
+              onTap: () {
+                Navigator.pop(context);
+                onCitySearchSelected();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

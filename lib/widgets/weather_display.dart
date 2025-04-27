@@ -18,27 +18,44 @@ class WeatherDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PullToRefresh(
-      onRefresh: onRefresh,
-      child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Location and main weather info
-              WeatherMainInfoWidget(
-                weather: weather,
-                animationPath: animationPath,
-              ),
+    // Use a Container with gradient background to match the screenshot
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF4A90E2), // Top blue
+            Color(0xFF5F9CE3), // Middle blue
+            Color(0xFF74A8E4), // Bottom blue
+          ],
+        ),
+      ),
+      child: PullToRefresh(
+        onRefresh: onRefresh,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical: 32.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Location and main weather info with Lottie animation
+                WeatherMainInfoWidget(
+                  weather: weather,
+                  animationPath: animationPath,
+                ),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-              // Weather details cards
-              WeatherDetailsCardsWidget(weather: weather),
-            ],
+                // Weather details cards
+                WeatherDetailsCardsWidget(weather: weather),
+              ],
+            ),
           ),
         ),
       ),
