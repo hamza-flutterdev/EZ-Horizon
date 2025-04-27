@@ -24,11 +24,9 @@ class _CitySearchDialogState extends State<CitySearchDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final bottomInset = MediaQuery.of(context).viewInsets.bottom;
     final cityCache = CityDataCache();
 
-    return Padding(
-      padding: EdgeInsets.only(bottom: bottomInset),
+    return Center(
       child: SingleChildScrollView(
         child: AlertDialog(
           backgroundColor: const Color(0xFF4A90E2),
