@@ -20,15 +20,16 @@ This app allows users to:
 
 ## 🔧 Technologies & Packages Used
 
-| Package                                                                         | Purpose                        |
-|---------------------------------------------------------------------------------|--------------------------------|
-| [http](https://pub.dev/packages/http)                                           | REST API integration           |
-| [geolocator](https://pub.dev/packages/geolocator)                               | Location services              |
-| [geocoding](https://pub.dev/packages/geocoding)                                 | Coordinate conversion          |
-| [lottie](https://pub.dev/packages/lottie)                                       | Animated weather illustrations |
-| [country_state_city_picker](https://pub.dev/packages/country_state_city_picker) | Structured location selection  |
-| [flutter_typeahead](https://pub.dev/packages/flutter_typeahead)                 | Intelligent city search        |
-| [intl](https://pub.dev/packages/intl)                                           | Date/time formatting           |
+| Package                                                                         | Purpose                         |
+|---------------------------------------------------------------------------------|---------------------------------|
+| [http](https://pub.dev/packages/http)                                           | REST API integration            |
+| [geolocator](https://pub.dev/packages/geolocator)                               | Location services               |
+| [geocoding](https://pub.dev/packages/geocoding)                                 | Coordinate conversion           |
+| [lottie](https://pub.dev/packages/lottie)                                       | Animated weather illustrations  |
+| [country_state_city_picker](https://pub.dev/packages/country_state_city_picker) | Structured location selection   |
+| [flutter_typeahead](https://pub.dev/packages/flutter_typeahead)                 | Intelligent city search         |
+| [intl](https://pub.dev/packages/intl)                                           | Date/time formatting            |
+| [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)                       | Environment variable management |
 
 ---
 
@@ -44,6 +45,8 @@ This app allows users to:
   - 🔁 Implemented pull-to-refresh functionality
 
 ### 🛠 Improvements
+- Improved UI Design
+- Fixed overflowing issues
 - Preloaded and cached `cities.json` for faster search
 - Expanded city/country database
 - Fixed UI overflow issues
@@ -59,6 +62,7 @@ lib/
 ├── widgets/ # Reusable components
 ├── services/ # API & location logic
 ├── models/ # Data models
+├── models/ # Lottie animations
 └── assets/ # Local data files
 
 ---
@@ -100,6 +104,7 @@ flutter run
 - 📊 Detailed weather insights (humidity, wind, visibility, pressure, sunrise/sunset)
 - ⚡ Optimised performance with cached city data
 - 🧠 State and asynchronous data handling
+- 🔑 Secure handling of API keys using environment variables
 
 ## 🙋‍♂️ About Me
 
