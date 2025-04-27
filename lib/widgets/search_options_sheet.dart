@@ -31,47 +31,49 @@ class SearchOptionsSheet extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 40,
-              height: 4,
-              margin: const EdgeInsets.only(bottom: 16),
-              decoration: BoxDecoration(
-                color: Colors.white.withAlpha(135),
-                borderRadius: BorderRadius.circular(2),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 40,
+                height: 4,
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withAlpha(135),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            ),
-            BuildListTile(
-              icon: Icons.my_location,
-              title: 'Current Location',
-              onTap: () {
-                Navigator.pop(context);
-                onCurrentLocationSelected();
-              },
-            ),
+              BuildListTile(
+                icon: Icons.my_location,
+                title: 'Current Location',
+                onTap: () {
+                  Navigator.pop(context);
+                  onCurrentLocationSelected();
+                },
+              ),
 
-            const Divider(color: Colors.white24),
-            BuildListTile(
-              icon: Icons.flag,
-              title: 'Select Country & City',
-              onTap: () {
-                Navigator.pop(context);
-                onCountryCitySelected();
-              },
-            ),
+              const Divider(color: Colors.white24),
+              BuildListTile(
+                icon: Icons.flag,
+                title: 'Select Country & City',
+                onTap: () {
+                  Navigator.pop(context);
+                  onCountryCitySelected();
+                },
+              ),
 
-            const Divider(color: Colors.white24),
-            BuildListTile(
-              icon: Icons.search,
-              title: 'Search by Name',
-              onTap: () {
-                Navigator.pop(context);
-                onCitySearchSelected();
-              },
-            ),
-          ],
+              const Divider(color: Colors.white24),
+              BuildListTile(
+                icon: Icons.search,
+                title: 'Search by Name',
+                onTap: () {
+                  Navigator.pop(context);
+                  onCitySearchSelected();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

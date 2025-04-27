@@ -43,54 +43,50 @@ class CountryCityPickerDialog extends StatelessWidget {
 
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Text(
-                'Select Location',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.center,
+          child: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.8,
               ),
-              const SizedBox(height: 16),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  // Pass the width constraint to ensure SelectState respects boundaries
-                  return SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: SizedBox(
-                      width: constraints.maxWidth,
-                      // Force the SelectState to fit within our width constraints
-                      child: SelectState(
-                        onCountryChanged: (value) {},
-                        onStateChanged: (value) {},
-                        onCityChanged: (value) {
-                          if (value.isNotEmpty) {
-                            onCitySelected(value);
-                            Navigator.pop(context);
-                          }
-                        },
-                        style: const TextStyle(color: Colors.white),
-                        dropdownColor: Color(0xFF4A90E2),
-                      ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    'Select Location',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                  );
-                },
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  SelectState(
+                    onCountryChanged: (value) {},
+                    onStateChanged: (value) {},
+                    onCityChanged: (value) {
+                      if (value.isNotEmpty) {
+                        onCitySelected(value);
+                        Navigator.pop(context);
+                      }
+                    },
+                    style: const TextStyle(color: Colors.white),
+                    dropdownColor: Color(0xFF4A90E2),
+                  ),
+
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF4A90E2),
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text('Cancel'),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4A90E2),
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text('Cancel'),
-              ),
-            ],
+            ),
           ),
         ),
       ),
