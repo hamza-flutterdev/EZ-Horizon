@@ -42,7 +42,7 @@ class CountryCityPickerDialog extends StatelessWidget {
         ),
 
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 3.24, vertical: 16.0),
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
